@@ -368,9 +368,8 @@ NS_ASSUME_NONNULL_BEGIN
   }
   NSString *idToken = [[NSString alloc] initWithData:appleIDCredential.identityToken encoding:NSUTF8StringEncoding];
   NSString *rawNonce = self.currentNonce;
-  FIROAuthCredential *credential = [FIROAuthProvider credentialWithProviderID:@"apple.com"
-                                                                      IDToken:idToken
-                                                                     rawNonce:rawNonce];
+  FIROAuthCredential *credential = [FIROAuthProvider appleCredentialWithIDToken: idToken rawNonce: rawNonce fullName: appleIDCredential.fullName];
+    
   _providerSignInCompletion(credential, nil, nil, nil);
 }
 
